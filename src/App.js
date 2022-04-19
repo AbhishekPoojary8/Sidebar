@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+
+import PersistentDrawer from './Pages/atoms/SideBar';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from './Pages/Home';
+import Contact from './Pages/Contact';
+import About from './Pages/About'
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <PersistentDrawer/>
+     
+        <Switch>
+        <Route exact from="/"  >
+          <Home/>
+        </Route>
+        <Route exact path="/contact"  >
+          <Contact/>
+        </Route>
+        <Route exact path="/about" >
+          <About/>
+          </Route>
+      </Switch> 
+        
+      </Router>
+    </>
   );
 }
 
